@@ -1,15 +1,32 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Optional
 from .calculate_din import calculate_din
+
+load_dotenv()
 
 app = FastAPI()
 
+# Get environment variables
+env = os.getenv("ENV")
+dev_client_url = os.getenv("DEV_CLIENT_URL")
+prod_client_url = os.getenv("PROD_CLIENT_URL")
+
+# Define allowed origins based on environment
+if env == "production":
+    allowed_origins = [prod_client_url]
+else:
+    allowed_origins = [dev_client_url]
+
+# Add CORS middleware with restricted origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=allowed_origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST"],  # Restrict to necessary methods
     allow_headers=["*"],
 )
 
@@ -22,7 +39,7 @@ class SkiDinRequest(BaseModel):
 
 class SkiDinResponse(BaseModel):
     skier_code: str
-    din: float
+    din: Optional[float] = None
 
 @app.post("/calculate_din", response_model=SkiDinResponse)
 def calculate_din_endpoint(request: SkiDinRequest):
