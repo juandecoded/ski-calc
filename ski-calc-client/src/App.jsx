@@ -1,6 +1,5 @@
 import { Flex, Text } from '@mantine/core'
-import CalculatorForm from './components/CalculatorForm'
-import Result from './components/Result'
+import { CalculatorForm, Result, ErrorMessage } from './components';
 import useCalculateDin from './hooks/useCalculateDin'
 
 function App() {
@@ -14,15 +13,20 @@ function App() {
       direction="column"
       wrap="nowrap"
     >
-        <h1>Ski DIN Calculator</h1>
+        <h1>Ski Bindings DIN Calculator</h1>
         <CalculatorForm calculateDin={calculateDin}/>
-        {result && <Result skierCode={result.skier_code} din={result.din} />}
-            {error && <p>Error calculating DIN: {error.message}</p>}
-        <Text align="center">
+      
+        {error ? (
+          <ErrorMessage />
+        ) : (
+          result && <Result skierCode={result.skier_code} din={result.din} />
+        )}
+        
+        <Text align="center" style={{ maxWidth: "80%"}}>
         This DIN calculator is for reference purposes only. It is recommended to always have your bindings mounted, tested and adjusted by a professional ski technician with the equipment to appropriately measure the release forces.
         </Text>
     </Flex>
   )
 }
 
-export default App
+export default App;

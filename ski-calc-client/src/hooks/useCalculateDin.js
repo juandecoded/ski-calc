@@ -5,6 +5,10 @@ const useCalculateDin = () => {
     const [error, setError] = useState(null);
 
     const calculateDin = async (data) => {
+        // Clear prev error state when doing a new calculation
+        setResult(null);
+        setError(null);
+        
         try {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/calculate_din`, {
                 method: 'POST',
