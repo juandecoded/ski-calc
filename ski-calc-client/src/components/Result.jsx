@@ -10,7 +10,7 @@ const Result = ({ skierCode, din }) => {
                     DIN Value: <strong>{din}</strong>
                 </p>
             ) : (
-                <p>Unable to calculate DIN wit provided skier information.</p>
+                <p>Unable to calculate DIN with provided skier information.</p>
             )}
         </div>
     );
