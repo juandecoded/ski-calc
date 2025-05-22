@@ -89,12 +89,13 @@ def calculate_din(weight, height, age, skier_type, sole_length):
         skier_code = ski_chart[skier_code_index][2]
         din = ski_chart[skier_code_index][sole_length_index]
 
-        if din is None:
-            raise ValueError("DIN value could not be calculated for the given inputs.")
-
         return skier_code,  din
     except Exception as error:
         print(f"An error occurred: {error}")
+        try:
+            return ski_chart[skier_code_index][2], None
+        except:
+            return "Unknown", None
 
 
 # test cases

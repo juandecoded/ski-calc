@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorMessage from './ErrorMessage';
 
 const Result = ({ skierCode, din }) => {
     return (
@@ -10,7 +11,7 @@ const Result = ({ skierCode, din }) => {
                     DIN Value: <strong>{din}</strong>
                 </p>
             ) : (
-                <p>Unable to calculate DIN with provided skier information.</p>
+                <ErrorMessage />
             )}
         </div>
     );

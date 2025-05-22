@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/calculate-din'; // Update with your server URL
+const API_URL = 'http://localhost:8000/calculate-din'; // 
 
 export const calculateDin = async (weight, height, age, skierType, soleLength) => {
     try {

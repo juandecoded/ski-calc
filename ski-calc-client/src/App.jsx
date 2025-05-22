@@ -22,7 +22,7 @@ function App() {
           result && <Result skierCode={result.skier_code} din={result.din} />
         )}
         
-        <Text align="center" style={{ maxWidth: "80%"}}>
+        <Text align="center" style={{ maxWidth: "75%"}}>
         This DIN calculator is for reference purposes only. It is recommended to always have your bindings mounted, tested and adjusted by a professional ski technician with the equipment to appropriately measure the release forces.
         </Text>
     </Flex>
