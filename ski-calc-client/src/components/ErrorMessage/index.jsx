@@ -4,20 +4,21 @@ import classes from './styles.module.css'
 
 const ErrorMessage = () => {
 
-    const icon = <IconAlertTriangle />;
+    // const icon = <IconAlertTriangle />;
 
     return (
         <Alert
             title='Unable to calculate DIN'
             color='red'
-            icon={icon}
+            // icon={icon}
             classNames={{
                 title: classes.title,
                 message: classes.message,
                 label: classes.label
             }}      
         >
-            Unable to calculate DIN with the provided skier information. Please check your skier parameters.
+            Unable to calculate DIN with the provided skier information. <br />
+            Please check your skier parameters.
         </Alert>
     )
 }
