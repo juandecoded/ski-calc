@@ -11,9 +11,9 @@ load_dotenv()
 app = FastAPI()
 
 # Get environment variables
-env = os.getenv("ENV")
+env = os.getenv("ENV", "production")
 dev_client_url = os.getenv("DEV_CLIENT_URL")
-prod_client_url = os.getenv("PROD_CLIENT_URL")
+prod_client_url = os.getenv("PROD_CLIENT_URL", "https://ski-calc.up.railway.app")
 
 # Define allowed origins based on environment
 if env == "production":
