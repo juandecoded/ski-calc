@@ -1,30 +1,15 @@
-import os
-from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 from .calculate_din import calculate_din
 
-load_dotenv()
-
 app = FastAPI()
-
-# Get environment variables
-env = os.getenv("ENV", "production")
-dev_client_url = os.getenv("DEV_CLIENT_URL")
-prod_client_url = os.getenv("PROD_CLIENT_URL", "https://ski-calc.up.railway.app")
-
-# Define allowed origins based on environment
-if env == "production":
-    allowed_origins = [prod_client_url]
-else:
-    allowed_origins = [dev_client_url]
 
 # Add CORS middleware with restricted origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,
+    allow_origins=["https://ski-calc.up.railway.app"],
     allow_credentials=True,
     allow_methods=["GET", "POST"],  # Restrict to necessary methods
     allow_headers=["*"],

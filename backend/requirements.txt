@@ -2,4 +2,3 @@ FastAPI
 uvicorn
 pydantic
 hypercorn
-python-dotenv
